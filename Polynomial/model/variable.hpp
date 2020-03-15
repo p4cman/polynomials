@@ -1,10 +1,20 @@
-#include "VariableName.hpp"
+#ifndef _VARIABLE_HPP_
+#define _VARIABLE_HPP_
+
+#include <string>
 
 class Variable {
 public:
-    Variable(VariableName name, int exponent)
-    
+    Variable(char name, int index);
+    virtual ~Variable();
+    std::string String() const;
+    bool operator<(const Variable& rhs) const;
+    bool operator==(const Variable& rhs) const;
+    char GetName() const;
+    int GetIndex() const;
 private:
-    VariableName m_name;
-    int m_exponent;
-}
+    int m_index;
+    char m_name;
+};
+
+#endif

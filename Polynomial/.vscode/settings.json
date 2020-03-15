@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "xstring": "cpp"
+    },
+    "editor.renderWhitespace": "boundary",
+    "editor.InsertSpace" : "false"
+}
