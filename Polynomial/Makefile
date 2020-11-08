@@ -18,4 +18,4 @@ term.o: model/term.cpp model/term.hpp
 .PHONY: clean
 
 clean:
-	rm polynomial.exe *.o
+	rm -f polynomial.exe *.o

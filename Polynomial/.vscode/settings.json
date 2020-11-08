@@ -1,6 +1,10 @@
 {
     "files.associations": {
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "vector": "cpp",
+        "xtree": "cpp",
+        "xutility": "cpp",
+        "iostream": "cpp"
     },
     "editor.renderWhitespace": "boundary",
     "editor.InsertSpace" : "false"

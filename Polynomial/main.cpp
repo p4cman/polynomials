@@ -4,6 +4,7 @@
 #include "model/subterm.hpp"
 #include "model/term.hpp"
 #include "model/monomial.hpp"
+#include "model/polynomial.hpp"
 
 int main(){
     Subterm s1(Variable('x',1));
@@ -30,9 +31,16 @@ int main(){
 
     Monomial<int> m;
     m.WithCoef(10).WithTerm(prod);
-    std::cout <<"toto" <<std::endl;
-
-    
+           
     std::cout<< "monomial: " << m.String() << std::endl;
+
+
+    Monomial<int> m2;
+    m2.WithCoef(5).WithTerm(t);
+    Polynomial<int> poly;
+    poly.addMonomial(m);
+    poly.addMonomial(m);
+    poly.addMonomial(m2);
+    std::cout<< "polynomial: " << poly.String() << std::endl;
 
 }

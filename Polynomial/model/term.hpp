@@ -18,7 +18,7 @@ public:
     std::vector<Subterm> getSubterms() const;
     friend Term operator*(Term lhs, const Term& rhs);
     bool operator==(const Term& rhs);
-private:
+ private:
     std::map<Variable, Subterm*> m_subterms;
 };
 
