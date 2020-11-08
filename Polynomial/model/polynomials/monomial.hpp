@@ -6,7 +6,6 @@
 #include "term.hpp"
 #include <string>
 #include <sstream>
-#include <iostream>
 
 template<typename T>
 class Monomial {
@@ -17,16 +16,16 @@ public:
     Monomial& WithCoef(T coef);
     std::string String() const;
     T getCoefficient() const;
-    Term getTerm() const;    
+    Term getTerm() const;
+    template<typename S>
+    friend Monomial<S> operator*(Monomial<S> lhs, const Monomial<S>& rhs);    
 private:
     T m_coef;
     Term m_term;
 };
 
 template<typename T>
-Monomial<T>::Monomial() :m_coef(0) {
-    std::cout << "monomial created"<< std::endl;
-}
+Monomial<T>::Monomial() :m_coef(0) {}
 
 template<typename T>
 Monomial<T>::~Monomial(){}
@@ -34,7 +33,6 @@ Monomial<T>::~Monomial(){}
 template<typename T>    
 Monomial<T>& Monomial<T>::WithTerm(Term t) {
     this->m_term = t;
-     std::cout << "With term: "<< t.String() << std::endl;
     return *this;
 }
 
@@ -42,7 +40,6 @@ template<typename T>
 Monomial<T>& Monomial<T>::WithCoef(T coef) {
     
     this->m_coef = coef;
-    std::cout << "With coef: "<< coef << std::endl;
     return *this;
 }
 
@@ -75,5 +72,11 @@ template<typename T>
 Term Monomial<T>::getTerm() const {
     return this->m_term;
 } 
+
+template<typename S>
+Monomial<S> operator*(Monomial<S> lhs, const Monomial<S>& rhs) {
+    Monomial<S> m;
+    return m.WithCoef(lhs.getCoefficient() * rhs.getCoefficient()).WithTerm(lhs.getTerm() * rhs.getTerm());
+}
 
 #endif

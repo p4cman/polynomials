@@ -54,4 +54,27 @@ std::string Polynomial<T>::String() const {
     return polyStr.str();
 }
 
+template<typename S>
+Polynomial<S> Sum(Polynomial<S>& lhs, const Polynomial<S>& rhs) {
+    Polynomial<S> result;
+     for (auto&& m : lhs.m_monomials) {
+         result.addMonomial(m);
+     }
+     for (auto&& m : rhs.m_monomials) {
+         result.addMonomial(m);
+     }
+     return result;
+}
+
+template<typename T>
+Polynomial<T> Product(Polynomial<T>& lhs, const Polynomial<T>& rhs) {
+    Polynomial<T> result;
+    for (auto&& m1 : lhs.m_monomials) {
+        for (auto&& m2 : rhs.m_monomials) {
+            result.addMonomial(m1 * m2);
+        }
+    }
+    return result;
+}
+
 #endif

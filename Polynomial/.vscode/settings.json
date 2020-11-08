@@ -4,7 +4,8 @@
         "vector": "cpp",
         "xtree": "cpp",
         "xutility": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "xlocale": "cpp"
     },
     "editor.renderWhitespace": "boundary",
     "editor.InsertSpace" : "false"

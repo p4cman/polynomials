@@ -1,19 +1,23 @@
+OBJECTS= variable.o subterm.o term.o
+HEADERS_ONLY= model/polynomials/monomial.hpp model/polynomials/polynomial.hpp
+INCLUDE= -I./model/polynomials
+
 all: polynomial.exe
 
-polynomial.exe: main.o  variable.o subterm.o term.o
-	g++ main.o  variable.o subterm.o term.o -o polynomial.exe
+polynomial.exe: main.o $(OBJECTS) 
+	g++ main.o variable.o subterm.o term.o -o polynomial.exe
 
-main.o: main.cpp model/monomial.hpp
-	g++ -c main.cpp -o main.o
+main.o: main.cpp model/polynomials/monomial.hpp model/polynomials/polynomial.hpp
+	g++ -c main.cpp $(INCLUDE) -o main.o
 
-variable.o: model/variable.cpp model/variable.hpp
-	g++ -c model/variable.cpp -o variable.o
+variable.o: model/polynomials/variable.cpp model/polynomials/variable.hpp
+	g++ -c model/polynomials/variable.cpp $(INCLUDE) -o variable.o
 
-subterm.o: model/subterm.cpp model/subterm.hpp
-	g++ -c model/subterm.cpp -o subterm.o
+subterm.o: model/polynomials/subterm.cpp model/polynomials/subterm.hpp model/polynomials/variable.hpp
+	g++ -c model/polynomials/subterm.cpp $(INCLUDE) -o subterm.o
 
-term.o: model/term.cpp model/term.hpp
-	g++ -c model/term.cpp -o term.o
+term.o: model/polynomials/term.cpp model/polynomials/term.hpp model/polynomials/variable.hpp model/polynomials/subterm.hpp
+	g++ -c model/polynomials/term.cpp $(INCLUDE) -o term.o
 
 .PHONY: clean
 
